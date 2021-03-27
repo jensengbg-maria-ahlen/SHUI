@@ -1,0 +1,21 @@
+@import './layouts';
+@import './typography';
+
+
+html, * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #19274A;
+
+    #app {
+        height: inherit;
+
+        main {
+            height: inherit;
+        }
+    }
+}
