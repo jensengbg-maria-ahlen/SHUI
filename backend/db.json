@@ -5,6 +5,12 @@
       "username": "mariaahlen",
       "password": "$2b$10$atLfaX3JuJ0XKtBye020i.XgClsisg8cCF4aax7StfrSzh0LYOaIG",
       "userkey": "U2FsdGVkX19vu5b5znYZLPSCm7zDipIC9640dPN61tg="
+    },
+    {
+      "uuid": "k7u1DEnzMs",
+      "username": "maria.ahlen",
+      "password": "$2b$10$8n62jsy8ss5Rp9RsFsqN1ewDV9H2.8OlmHEJjLdiFUizm.3BCAl..",
+      "userkey": "U2FsdGVkX187yZPH8VfsjUVE4EcLQautCyAVFCMGPtA="
     }
   ],
   "flow": []

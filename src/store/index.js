@@ -12,6 +12,14 @@ export default new Vuex.Store({
   mutations: {
   },
   actions: {
+    async register(ctx, cred) {
+      let resp = await ax.post(`${ctx.state.API}/users/create`, {
+        username: cred.username,
+        password: cred.password
+      });
+      console.log(resp)
+    },
+
     async login(ctx, cred) {
       let resp = await ax.post(`${ctx.state.API}/auth/login`, {
         username: cred.username,

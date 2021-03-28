@@ -7,7 +7,8 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+Frontend: npm run serve
+Backend: nodemon index.js
 ```
 
 ### Compiles and minifies for production

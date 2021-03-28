@@ -23,6 +23,11 @@ const routes = [
     path: '/flow',
     name: 'Flow',
     component: () => import('../views/Flow.vue')
+  },
+  {
+    path: '/removed',
+    name: 'Removed',
+    component: () => import('../views/Removed.vue')
   }
 ]
 

@@ -4,7 +4,7 @@ body {
         display: flex;
         flex-direction: column;
 
-        #landing, #login, #register {
+        #landing, #login, #register, #removed {
             background-image: url('./assets/bottom.svg');
             background-repeat: no-repeat;
             background-position: bottom center;
@@ -18,7 +18,7 @@ body {
             }
         }
 
-        #landing {
+        #landing, #removed {
             min-width: 100vw;
             min-height: 100vh;
             display: flex;
