@@ -91,14 +91,18 @@ body {
 
 
         #flow {
+            min-width: 100%;
+            min-height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(to bottom, #19274a, #0000004b);
+            background: linear-gradient(to bottom, #19274a, #0b0d16);
             
 
             .whatsHappening{
+                min-width: 100%;
+                min-height: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;

@@ -5,22 +5,32 @@
       <h1>SHUI</h1>
       <h3>FLOW FREELY</h3>
     </div>
-    <section class="LoginCredentials">
+    <form class="LoginCredentials" @submit.prevent="login">
       <div class="inputFieldsForLogin">
-        <input type="text" placeholder="Användarnamn" />
-        <input type="password" placeholder="Lösenord" />
+        <input type="text" placeholder="Användarnamn" v-model="username" />
+        <div v-show="submitted && !username" class="missingCred">Du måste fylla i användarnamn</div>
+        <input type="password" placeholder="Lösenord" v-model="password"/>
+        <div v-show="submitted && !password" class="missingCred">Du måste fylla i lösenord</div>
       </div>
-      <button id="loginBtn" @click="login()">Logga in</button>
-    </section>
+      <button id="loginBtn" type="submit">Logga in</button>
+    </form>
   </section>
 </template>
 
 <script>
 export default {
   name: "Login",
+  data() {
+    return {
+      username: "",
+      password: "",
+      submitted: false
+    };
+  },
   methods: {
     login() {
-      this.$router.push("/flow");
+      this.submitted = true
+      this.$store.dispatch('login', { username: this.username, password: this.password })
     },
   },
 };

@@ -16,7 +16,7 @@ app.use('/users', usersRoute);
 app.use('/flow', flowRoute);
 app.use('/auth', authRoute);
 
-const port = 6000;
+const port = 3000;
 app.listen(port, () => {
     console.log('Server is up and running on port ' + port + '!');
 });
