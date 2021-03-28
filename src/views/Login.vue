@@ -7,6 +7,7 @@
     </div>
     <form class="LoginCredentials" @submit.prevent="login">
       <div class="inputFieldsForLogin">
+        <div class="errorMessage">{{displayError}}</div>
         <input type="text" placeholder="Användarnamn" v-model="username" />
         <div v-show="submitted && !username" class="missingCred">Du måste fylla i användarnamn</div>
         <input type="password" placeholder="Lösenord" v-model="password"/>
@@ -33,6 +34,11 @@ export default {
       this.$store.dispatch('login', { username: this.username, password: this.password })
     },
   },
+  computed: {
+    displayError() {
+      return this.$store.state.errorMessage
+    }
+  }
 };
 </script>
 
