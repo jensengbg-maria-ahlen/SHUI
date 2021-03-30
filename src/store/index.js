@@ -30,6 +30,7 @@ export default new Vuex.Store({
           username: cred.username,
           password: cred.password
         });
+        console.log(resp)
         
         sessionStorage.setItem('token', resp.data.token);
         sessionStorage.setItem('userkey', resp.data.userkey);
