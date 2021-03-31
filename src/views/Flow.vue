@@ -1,8 +1,10 @@
 <template>
   <section id="flow">
-    <NewMessage />
-    <FlowMsg />
-    <img src="@/assets/create.png" alt="create button">
+    <NewMessage v-if="showNewMsg"/>
+    <FlowMsg v-for="flow in allFlows" :key="flow.id" :flow="flow" />
+    <div class="create">
+      <img src="@/assets/create.png" alt="create button" @click="toggleNewMsg()">
+    </div>
   </section>
 </template>
 
@@ -14,6 +16,22 @@ export default {
   components: {
     FlowMsg,
     NewMessage
+  },
+  computed: {
+    showNewMsg() {
+      return this.$store.state.showNewMsg
+    },
+    allFlows() {
+      return this.$store.state.allFlows
+    }
+  },
+  methods: {
+    toggleNewMsg() {
+      this.$store.commit('toggleNewMsg')
+    }
+  },
+  beforeMount() {
+    this.$store.dispatch('fetchAllFlows')
   }
 };
 </script>

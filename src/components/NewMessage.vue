@@ -1,12 +1,27 @@
 <template>
   <section id="newMessage">
-
+    <textarea class="commentInput" v-model="info"></textarea>
+    <input type="text" class="tagInput" placeholder="#position, #viktigt" v-model="tags">
+    <button class="publishBtn" @click="publish()">Publicera</button>
   </section>
 </template>
 
 <script>
 export default {
-    name: 'NewMessage'
+    name: 'NewMessage',
+    data() {
+      return {
+        info: '',
+        tags: ''
+      }
+    },
+    methods: {
+      publish() {
+        let tagsArray = this.tags.split(', ')
+        this.$store.dispatch('addFlow', {info: this.info, tags: tagsArray})
+        this.$store.commit('toggleNewMsg')
+      }
+    }
 }
 </script>
 

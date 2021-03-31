@@ -8,20 +8,33 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     API: 'http://localhost:3000',
-    errorMessage: '' 
+    allFlows: [],
+    errorMessage: '',
+    showNewMsg: false
   },
   mutations: {
+    allFlows(state, flow) {
+      state.allFlows = flow
+    },
+
+    toggleNewMsg(state) {
+      state.showNewMsg = !state.showNewMsg
+    },
+
     displayError(state, error) {
       state.errorMessage = error
     }
   },
   actions: {
     async register(ctx, cred) {
-      let resp = await ax.post(`${ctx.state.API}/users/create`, {
-        username: cred.username,
-        password: cred.password
-      });
-      console.log(resp)
+      try {
+        await ax.post(`${ctx.state.API}/users/create`, {
+          username: cred.username,
+          password: cred.password
+        });
+      } catch (error) {
+        ctx.commit('displayError', 'Användarnamnet är upptaget')
+      }
     },
 
     async login(ctx, cred) {
@@ -30,21 +43,39 @@ export default new Vuex.Store({
           username: cred.username,
           password: cred.password
         });
-        console.log(resp)
         
         sessionStorage.setItem('token', resp.data.token);
         sessionStorage.setItem('userkey', resp.data.userkey);
         router.push('/flow')
       } catch (error) {
-        console.log(error)
         ctx.commit('displayError', 'Användarnamn eller lösenord är felaktigt')
       }
-      
     },
 
-    async checkState() {
-      if(sessionStorage.getItem('userkey') === null) {
-        alert('Fel användarnamn eller lösenord')
+    async fetchAllFlows(ctx) {
+      try {
+        let data = await ax.get(`${ctx.state.API}/flow`)
+        ctx.commit('allFlows', data.data)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async addFlow(ctx, info) {
+      await ax.post(`${ctx.state.API}/flow/create`, info, {
+        headers: {
+          'authorization': `Bearer ${sessionStorage.getItem('token')}`
+        }
+      })
+      ctx.dispatch('fetchAllFlows')
+    },
+
+    async deleteUser(ctx) {
+      try {
+        await ax.delete(`${ctx.state.API}/users/delete`, sessionStorage.getItem('token'))
+        router.push('/removed')
+      } catch (error) {
+        console.log(error)
       }
     }
   },

@@ -1,23 +1,24 @@
 <template>
   <div class="whatsHappening">
       <div class="comment">
-        <span class="date"></span>
-        <p class="whatsGoingOn">
-        </p>
-        <h6 class="author"></h6>
+        <div>
+          <span class="date"> {{flow.date}}</span>
+          <p class="whatsGoingOn"> {{flow.info}} </p>
+        </div>
+        <h6 class="author">- {{flow.username}}</h6>
       </div>
       <div class="tags">
-        <h4></h4>
-        <h4></h4>
-        <h4></h4>
-        <img src="./../assets/Vector.png" alt="" />
+        <h4 v-for="tag in flow.tags" :key="tag.index">{{tag}}</h4>
       </div>
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'FlowMsg'
+    name: 'FlowMsg',
+    props: {
+      flow: Object
+    }
 }
 </script>
 

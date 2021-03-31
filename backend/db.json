@@ -1,17 +1,69 @@
 {
   "users": [
     {
-      "uuid": "k7u1DEnzMs",
-      "username": "maria.ahlen",
-      "password": "$2b$10$8n62jsy8ss5Rp9RsFsqN1ewDV9H2.8OlmHEJjLdiFUizm.3BCAl..",
-      "userkey": "U2FsdGVkX187yZPH8VfsjUVE4EcLQautCyAVFCMGPtA="
-    },
-    {
       "uuid": "7wqouhJNOW",
       "username": "mariaahlen",
       "password": "$2b$10$tvJI1bTOch3QtjraVYxrd.688iA5HJs74ADnv6uzzTihZerBNhFRS",
       "userkey": "U2FsdGVkX1/Wy9m+Uup5/g1kxXaoLochmqHjcpftZFw="
+    },
+    {
+      "uuid": "5MS9bkcm9m",
+      "username": "matilda",
+      "password": "$2b$10$P8y9aUEbpazZxAwcOtYq3.OjN./2S3Y6/XeHI1wcHUHaChPV4fqbW",
+      "userkey": "U2FsdGVkX19yrQAH4j2wCupjE3HiEjUEeCtIdLZ7/6I="
+    },
+    {
+      "uuid": "2Brb8xNYfn",
+      "username": "kalle.anka",
+      "password": "$2b$10$dw8vlCPOUMy.fxsYhHsTPe41z8YINA6OHcLuZL5s080EyMqRw6tF2",
+      "userkey": "U2FsdGVkX188HWzLjamIUtOe3sEW89NrpLlHdng9bMQ="
     }
   ],
-  "flow": []
+  "flow": [
+    {
+      "id": "pVWyF7pm6",
+      "date": "2021-03-31T08:10:06.769Z",
+      "owner": "ae7ff354696ae9b3e1cd04fc3152a6f46ffe524682f9e3b6fd164340c170a4562206746716e6fe9a51b7b508240e53044f52a693edd5cbcb3e4e3a4f538d9cf6",
+      "username": "mariaahlen",
+      "info": "Red Dragons hänger på Ullevi. Blue Lagoon, vi möts vid Kalle på Heden om 30.",
+      "tags": [
+        "#ullevi",
+        "#heden"
+      ]
+    },
+    {
+      "id": "-G439ctuw",
+      "date": "2021-03-31T08:21:24.287Z",
+      "owner": "e450255455da5ec56853797ddf7aa4cd06652393fda5d53ee059407b40f14acb9d775b391334f4011a0a589072e4bb0ba549fd88513c5aae26bafdfdde24bb4a",
+      "username": "matilda",
+      "info": "Jag vill ha glass. Kom och köp en till mig. ",
+      "tags": [
+        "#gbgraddglass",
+        "#sthlm"
+      ]
+    },
+    {
+      "id": "_09FWWf3-",
+      "date": "2021-03-31T09:00:37.433Z",
+      "owner": "ea17534594b7d1f1186542a5ef8a9232d7aaa742449c96e7cb936d9e927bf61dd0c9e3f41732393bc5a62e4c9cdeab43156230235083ab375efba306876df255",
+      "username": "kalle.anka",
+      "info": "Joakim har tappat bort sin kappsäck.\nHittelön på $2000 till den som hittar kappsäcken.",
+      "tags": [
+        "#joakimVonAnka",
+        "#ankeborg"
+      ]
+    },
+    {
+      "id": "H4Ckxz97B",
+      "date": "2021-03-31T09:02:27.426Z",
+      "owner": "ea17534594b7d1f1186542a5ef8a9232d7aaa742449c96e7cb936d9e927bf61dd0c9e3f41732393bc5a62e4c9cdeab43156230235083ab375efba306876df255",
+      "username": "kalle.anka",
+      "info": "Knattarna såg Magika de Hex flyga förbi Villa Villekulla. Skynda er och göm ert finporslin!",
+      "tags": [
+        "#ankeborg",
+        "#tjuv",
+        "#urgent"
+      ]
+    }
+  ]
 }

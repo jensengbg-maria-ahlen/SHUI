@@ -14,8 +14,9 @@ router.post('/create', async (req, res) => {
 
         const newFlow = {
             id: shortid.generate(),
+            date: new Date(),
             owner: CryptoJS.SHA3(user.uuid).toString(),
-            username: req.body.username,
+            username: user.username,
             info: req.body.info,
             tags: req.body.tags
         }
