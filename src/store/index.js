@@ -10,7 +10,8 @@ export default new Vuex.Store({
     API: 'http://localhost:3000',
     allFlows: [],
     errorMessage: '',
-    showNewMsg: false
+    showNewMsg: false,
+    showSettings: false
   },
   mutations: {
     allFlows(state, flow) {
@@ -23,6 +24,10 @@ export default new Vuex.Store({
 
     displayError(state, error) {
       state.errorMessage = error
+    },
+
+    showSettings(state) {
+      state.showSettings = !state.showSettings
     }
   },
   actions: {
@@ -50,6 +55,23 @@ export default new Vuex.Store({
       } catch (error) {
         ctx.commit('displayError', 'Användarnamn eller lösenord är felaktigt')
       }
+    },
+
+    async checkState(ctx) {
+        let resp = await ax.get(`${ctx.state.API}/auth/isloggedin`, {
+          headers: {
+            'authorization': `Bearer ${sessionStorage.getItem('token')}`
+          }
+        })
+        console.log(resp.data)
+
+        if(resp.data.loggedIn === false) {
+          sessionStorage.removeItem('token')
+          sessionStorage.removeItem('userkey')
+          router.push('/login')
+        } else {
+          ctx.commit('showSettings')
+        }
     },
 
     async fetchAllFlows(ctx) {

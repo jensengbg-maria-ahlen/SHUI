@@ -16,7 +16,7 @@ router.post('/login', async (req, res) => {
             const USER_KEY_DECRYPTED = bytes.toString(CryptoJS.enc.Utf8);
 
             const token = jwt.sign({ uuid: user.uuid }, process.env.JWT_KEY, {
-                expiresIn: 600
+                expiresIn: 3200
             });
             
             res.status(200).send({
@@ -30,5 +30,29 @@ router.post('/login', async (req, res) => {
         res.status(404).send('Not found')
     }
 });
+
+
+router.get('/isloggedin', async (req, res) => {
+    const token = req.headers['authorization'].split(' ')[1];
+
+    let resObj = {
+        loggedIn: false
+    }
+    
+    try {
+        if(token) {
+            const verified_user = jwt.verify(token, process.env.JWT_KEY);
+            if(verified_user) {
+                resObj.loggedIn = true;
+                resObj.user = verified_user
+            }
+            res.status(200).send(resObj); 
+        } else {
+            res.status(403).send(resObj);
+        }
+    } catch (error) {
+        res.status(403).send(resObj);
+    }
+})
 
 module.exports = router;

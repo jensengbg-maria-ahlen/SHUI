@@ -24,7 +24,7 @@ router.post('/create', async (req, res) => {
         db.get('flow').push(newFlow).write()
         res.sendStatus(201)
     } catch (error) {
-        res.sendStatus(400)
+        res.sendStatus(403)
     }
 });
 
