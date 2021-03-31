@@ -1,12 +1,6 @@
 {
   "users": [
     {
-      "uuid": "7wqouhJNOW",
-      "username": "mariaahlen",
-      "password": "$2b$10$tvJI1bTOch3QtjraVYxrd.688iA5HJs74ADnv6uzzTihZerBNhFRS",
-      "userkey": "U2FsdGVkX1/Wy9m+Uup5/g1kxXaoLochmqHjcpftZFw="
-    },
-    {
       "uuid": "5MS9bkcm9m",
       "username": "matilda",
       "password": "$2b$10$P8y9aUEbpazZxAwcOtYq3.OjN./2S3Y6/XeHI1wcHUHaChPV4fqbW",
@@ -17,6 +11,18 @@
       "username": "kalle.anka",
       "password": "$2b$10$dw8vlCPOUMy.fxsYhHsTPe41z8YINA6OHcLuZL5s080EyMqRw6tF2",
       "userkey": "U2FsdGVkX188HWzLjamIUtOe3sEW89NrpLlHdng9bMQ="
+    },
+    {
+      "uuid": "qZoFyUeLO1",
+      "username": "maria",
+      "password": "$2b$10$kv1UjgtO1Z3LPUsv/FTF8.qamnK.1uDyVLZ67KYpOawQmRhhZjt..",
+      "userkey": "U2FsdGVkX1+RyhLHqR3gwnMSQEUPuJ0ivmEfC9OoOEM="
+    },
+    {
+      "uuid": "sIzNWcKho8",
+      "username": "mariaahlen",
+      "password": "$2b$10$95j0R9OajV4u0fQ.jryNWOeebY/aSYjmhu4Mb7F0GdqF/9iVuSfiW",
+      "userkey": "U2FsdGVkX18MCIKb/JvkH0DerAAaEsujt/3PTxZDJes="
     }
   ],
   "flow": [
@@ -24,7 +30,7 @@
       "id": "pVWyF7pm6",
       "date": "2021-03-31T08:10:06.769Z",
       "owner": "ae7ff354696ae9b3e1cd04fc3152a6f46ffe524682f9e3b6fd164340c170a4562206746716e6fe9a51b7b508240e53044f52a693edd5cbcb3e4e3a4f538d9cf6",
-      "username": "mariaahlen",
+      "username": "Anonymous",
       "info": "Red Dragons hänger på Ullevi. Blue Lagoon, vi möts vid Kalle på Heden om 30.",
       "tags": [
         "#ullevi",

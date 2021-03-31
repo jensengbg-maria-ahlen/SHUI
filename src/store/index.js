@@ -93,9 +93,16 @@ export default new Vuex.Store({
     },
 
     async deleteUser(ctx) {
-      try {
-        await ax.delete(`${ctx.state.API}/users/delete`, sessionStorage.getItem('token'))
         router.push('/removed')
+        sessionStorage.removeItem('token')
+        sessionStorage.removeItem('userkey')
+      try {
+       await ax.delete(`${ctx.state.API}/users/delete`, {
+        headers: {
+          'authorization': `Bearer ${sessionStorage.getItem('token')}`
+        }
+       })
+        ctx.dispatch('fetchAllFlows')
       } catch (error) {
         console.log(error)
       }

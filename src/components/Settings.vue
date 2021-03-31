@@ -14,7 +14,7 @@
           <input type="text" class="streamInput" placeholder="#smooth_criminal"/>
           <button class="addBtn"><img src="./../assets/add.png" alt="addTag"></button>
         </div>
-        <button class="removeBtn">Shit, they're onto me!</button>
+        <button class="removeBtn" @click="deleteMe()">Shit, they're onto me!</button>
       </div>
     </div>
   </section>
@@ -32,6 +32,10 @@ export default {
     checkState() {
       this.$store.dispatch("checkState");
     },
+    deleteMe() {
+      this.$store.dispatch('checkState')
+      this.$store.dispatch("deleteUser");
+    }
   },
 };
 </script>
