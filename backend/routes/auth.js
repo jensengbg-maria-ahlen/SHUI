@@ -15,9 +15,7 @@ router.post('/login', async (req, res) => {
             const bytes = CryptoJS.AES.decrypt(user.userkey, process.env.SECRET);
             const USER_KEY_DECRYPTED = bytes.toString(CryptoJS.enc.Utf8);
 
-            const token = jwt.sign({ uuid: user.uuid }, process.env.JWT_KEY, {
-                expiresIn: 3200
-            });
+            const token = jwt.sign({ uuid: user.uuid }, process.env.JWT_KEY);
             
             res.status(200).send({
                 token: token,

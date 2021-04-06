@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import ax from 'axios'
 import router from './../router'
+import CryptoJS from 'crypto-js'
 
 Vue.use(Vuex)
 
@@ -58,12 +59,14 @@ export default new Vuex.Store({
     },
 
     async checkState(ctx) {
+      let user = sessionStorage.getItem('token')
+
+      if (user) {
         let resp = await ax.get(`${ctx.state.API}/auth/isloggedin`, {
           headers: {
-            'authorization': `Bearer ${sessionStorage.getItem('token')}`
+            'authorization': `Bearer ${user}`
           }
         })
-        console.log(resp.data)
 
         if(resp.data.loggedIn === false) {
           sessionStorage.removeItem('token')
@@ -72,17 +75,42 @@ export default new Vuex.Store({
         } else {
           ctx.commit('showSettings')
         }
+      } else {
+        console.log('user not logged in')
+      }
     },
 
     async fetchAllFlows(ctx) {
       try {
-        let data = await ax.get(`${ctx.state.API}/flow`)
-        ctx.commit('allFlows', data.data)
+        let data = await ax.get(`${ctx.state.API}/flow`,{
+          headers: {
+            'authorization': `Bearer ${sessionStorage.getItem('token')}`
+          }
+        })
+        
+        ctx.dispatch('decryptFlow', data.data)
       } catch (error) {
         console.log(error)
       }
     },
 
+    async decryptFlow(ctx, flows) {
+      let decryptedFlow = flows.map(value => {
+        console.log('value: ', value)
+        let decryptedinfo = CryptoJS.AES.decrypt(value.info, sessionStorage.getItem('userkey')).toString(CryptoJS.enc.Utf8)
+
+        //value.info = decryptedinfo
+        value = {...value, info: decryptedinfo}
+
+        console.log(`decryptedinfo: '${decryptedinfo}'`)
+
+        return value
+      });
+      
+      console.log('decryptedflow', decryptedFlow)
+      ctx.commit('allFlows', decryptedFlow)
+    },
+    
     async addFlow(ctx, info) {
       await ax.post(`${ctx.state.API}/flow/create`, info, {
         headers: {
@@ -93,21 +121,19 @@ export default new Vuex.Store({
     },
 
     async deleteUser(ctx) {
-        router.push('/removed')
-        sessionStorage.removeItem('token')
-        sessionStorage.removeItem('userkey')
       try {
        await ax.delete(`${ctx.state.API}/users/delete`, {
         headers: {
           'authorization': `Bearer ${sessionStorage.getItem('token')}`
         }
        })
-        ctx.dispatch('fetchAllFlows')
+        router.push('/removed')
+        sessionStorage.clear()
       } catch (error) {
         console.log(error)
       }
     }
   },
-  modules: {
+  modules: { 
   }
 })

@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const router = new Router();
 
 router.post('/create', async (req, res) => {
-    if(req.body.username && req.body.password) {
+    if (req.body.username && req.body.password) {
         const HASHED_PW = await bcrypt.hash(req.body.password, 10);
 
         const USER_KEY = shortid.generate();
@@ -33,14 +33,11 @@ router.delete('/delete', (req, res) => {
 
     try {
         const verified_user = jwt.verify(token, process.env.JWT_KEY);
-
-        db.get('flow').filter({ owner: CryptoJS.SHA3(verified_user.uuid).toString() }).forEach( (user) => {user.username = 'Anonymous'}).write()
+        db.get('flow').filter({ owner: CryptoJS.SHA3(verified_user.uuid).toString() }).forEach((user) => { user.username = 'Anonymous' }).write();
 
         db.get('users').remove({ uuid: verified_user.uuid }).write();
-        
-        res.sendStatus(410)
-    } catch (error) {
-        console.log(error)
+        res.sendStatus(201)
+    } catch {
         res.sendStatus(400)
     }
 })
