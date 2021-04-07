@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <img src="@/assets/top.png" alt="top-logo" @click="checkState">
+      <img src="@/assets/top.png" alt="top-logo" @click.prevent="checkState">
       <Settings v-if="showSettings"/>
     </header>
     <router-view/>

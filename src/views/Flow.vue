@@ -1,7 +1,7 @@
 <template>
   <section id="flow">
     <NewMessage v-if="showNewMsg"/>
-    <FlowMsg v-for="flow in allFlows" :key="flow.id" :flow="flow"/>
+    <FlowMsg v-for="flow in allFlows" :key="flow.id" :flow="flow" />
     <div class="create">
       <img src="@/assets/create.png" alt="create button" @click="toggleNewMsg()">
     </div>
@@ -21,6 +21,9 @@ export default {
     showNewMsg() {
       return this.$store.state.showNewMsg
     },
+    showAllFlow() {
+      return this.$store.state.hideAllFlow
+    },
     allFlows() {
       return this.$store.state.allFlows
     }
@@ -28,6 +31,7 @@ export default {
   methods: {
     toggleNewMsg() {
       this.$store.commit('toggleNewMsg')
+      this.$store.commit('showAllFlow')
     }
   },
   beforeMount() {

@@ -4,10 +4,10 @@
     <div class="setting">
       <div class="streams">
         <h2>streams</h2>
-        <div class="hashtags" v-for="flow in allFlows" :key="flow.id">
-          <div class="hashtag" v-for="tag in flow.tags" :key="tag.index">
-            <h5>{{ tag }}</h5>
-            <img src="./../assets/X.png" alt="removeTag" />
+        <div class="hashtags" >
+          <div class="hashtag" v-for="tag in allTags" :key="tag.index" >
+            <h5>{{tag}}</h5>
+            <div @click="removeFlow()"><img src="./../assets/X.png" alt="removeTag" /></div>
           </div>
         </div>
       </div>
@@ -17,8 +17,9 @@
             type="text"
             class="streamInput"
             placeholder="#smooth_criminal"
+            v-model="tag"
           />
-          <button class="addBtn">
+          <button class="addBtn" @click="showFlow()">
             <img src="./../assets/add.png" alt="addTag" />
           </button>
         </div>
@@ -33,15 +34,28 @@
 <script>
 export default {
   name: "Settings",
+  data() {
+    return {
+      tag: ''
+    }
+  },
   computed: {
     showSettings() {
       return this.$store.state.showSettings;
     },
-    allFlows() {
-      return this.$store.state.allFlows;
+    allTags() {
+      return this.$store.getters['filterTags'];
     },
   },
   methods: {
+    removeFlow() {
+      console.log('borttagen')
+      //this.$store.dispatch('removeFlow', this.tag)
+    },
+    showFlow() {
+      console.log('tillagd', this.tag)
+      //this.$store.dispatch('showFlow', this.tag)
+    },
     checkState() {
       this.$store.dispatch("checkState");
     },

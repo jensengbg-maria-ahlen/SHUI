@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import ax from 'axios'
 import router from './../router'
-import CryptoJS from 'crypto-js'
+//import CryptoJS from 'crypto-js'
 
 Vue.use(Vuex)
 
@@ -10,13 +10,23 @@ export default new Vuex.Store({
   state: {
     API: 'http://localhost:3000',
     allFlows: [],
+    allTags: [],
     errorMessage: '',
     showNewMsg: false,
+    showAllFlow: true,
     showSettings: false
   },
   mutations: {
     allFlows(state, flow) {
       state.allFlows = flow
+    },
+
+    allTags(state, tags) {
+      state.allTags = tags
+    },
+
+    showAllFlow(state) {
+      state.showAllFlow = !state.showAllFlow
     },
 
     toggleNewMsg(state) {
@@ -95,6 +105,8 @@ export default new Vuex.Store({
       }
     },
 
+
+    /*
     async decryptFlow(ctx, flows) {
       let decryptedFlow = flows.map(value => {
         console.log('value: ', value)
@@ -109,7 +121,7 @@ export default new Vuex.Store({
       console.log('decryptedflow', decryptedFlow)
       ctx.commit('allFlows', decryptedFlow)
     },
-
+*/
     async addFlow(ctx, info) {
       await ax.post(`${ctx.state.API}/flow/create`, info, {
         headers: {
@@ -133,6 +145,19 @@ export default new Vuex.Store({
       }
     }
   },
-  modules: {
+  getters: {
+    filterTags(ctx) {
+      let allFlows = ctx.allFlows
+
+      let tagsArray = allFlows.map(tag => {
+        let newTag = tag.tags
+        return newTag
+      });
+
+      const mergeArray = [].concat.apply([], tagsArray)
+      let removedDuplicates = [...new Set(mergeArray)]
+
+      return removedDuplicates
+    }
   }
 })

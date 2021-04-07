@@ -12,9 +12,12 @@ router.post('/create', async (req, res) => {
         const verified_user = jwt.verify(token, process.env.JWT_KEY);
         let user = db.get('users').find({ uuid: verified_user.uuid }).value();
 
+        let usersTags = db.get('users').find({ uuid: verified_user.uuid }).get('tags').push(...req.body.tags).write()
+        console.log(usersTags)
+
         const newFlow = {
             id: shortid.generate(),
-            date: new Date(),
+            date: new Date().toLocaleString(),
             owner: CryptoJS.SHA3(user.uuid).toString(),
             username: user.username,
             info: req.body.info, //CryptoJS.AES.encrypt(req.body.info, process.env.SECRET).toString(),
@@ -28,6 +31,8 @@ router.post('/create', async (req, res) => {
         console.log(error)
     }
 });
+
+
 
 router.get('/', (req, res) => {
     try {

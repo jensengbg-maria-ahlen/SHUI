@@ -1,6 +1,6 @@
 <template>
   <section id="newMessage">
-    <textarea class="commentInput" v-model="info"></textarea>
+    <textarea class="commentInput" type="text" v-model="info"></textarea>
     <input type="text" class="tagInput" placeholder="#position, #viktigt" v-model="tags">
     <button class="publishBtn" @click="publish()">Publicera</button>
   </section>
