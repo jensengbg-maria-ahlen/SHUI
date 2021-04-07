@@ -17,11 +17,9 @@ router.post('/create', async (req, res) => {
             date: new Date(),
             owner: CryptoJS.SHA3(user.uuid).toString(),
             username: user.username,
-            info: CryptoJS.AES.encrypt(req.body.info, process.env.SECRET).toString(),
+            info: req.body.info, //CryptoJS.AES.encrypt(req.body.info, process.env.SECRET).toString(),
             tags: req.body.tags
         }
-
-        console.log('info: ', req.body.info)
 
         db.get('flow').push(newFlow).write()
         res.sendStatus(201)
@@ -31,7 +29,17 @@ router.post('/create', async (req, res) => {
     }
 });
 
+router.get('/', (req, res) => {
+    try {
+        let flows = db.get('flow').value()
+        res.status(200).send(flows)
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(400)
+    }
+})
 
+/*
 router.get('/', (req, res) => {
     const token = req.headers['authorization'].split(' ')[1];
 
@@ -56,7 +64,7 @@ router.get('/', (req, res) => {
 
                 flow.info = encrypted
 
-                return flow
+                return {...flow, info: encrypted}
             } catch (error) {
                 console.log(error)
             }
@@ -68,5 +76,6 @@ router.get('/', (req, res) => {
         res.sendStatus(400)
     }
 })
+*/
 
 module.exports = router;

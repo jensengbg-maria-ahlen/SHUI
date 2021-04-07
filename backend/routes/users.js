@@ -17,13 +17,20 @@ router.post('/create', async (req, res) => {
             uuid: shortid.generate(),
             username: req.body.username,
             password: HASHED_PW,
-            userkey: USER_KEY_ENCRYPTED
+            userkey: USER_KEY_ENCRYPTED,
+            tags: []
         };
 
-        db.get('users').push(newUser).write();
-        res.status(201).send('User Created');
+        let userExist = db.get('users').find({username: req.body.username}).value()
+        
+        if(!userExist) {
+            db.get('users').push(newUser).write();
+            res.status(201).send('User Created');
+        } else {
+            res.status(400).send('User already exist');
+        }        
     } else {
-        res.status(400).end('Whoops! Did you really entered the credentials correctly?');
+        res.status(400).send('Username or password is incorrect');
     }
 });
 
@@ -36,9 +43,9 @@ router.delete('/delete', (req, res) => {
         db.get('flow').filter({ owner: CryptoJS.SHA3(verified_user.uuid).toString() }).forEach((user) => { user.username = 'Anonymous' }).write();
 
         db.get('users').remove({ uuid: verified_user.uuid }).write();
-        res.sendStatus(201)
+        res.status(201).send('user is logged in')
     } catch {
-        res.sendStatus(400)
+        res.status(400).send('user is not logged in')
     }
 })
 
