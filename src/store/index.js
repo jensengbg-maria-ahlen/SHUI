@@ -131,6 +131,22 @@ export default new Vuex.Store({
       ctx.dispatch('fetchAllFlows')
     },
 
+    async addTagToUser(ctx, tags) {
+      await ax.post(`${ctx.state.API}/tags/addtag`, tags, {
+        headers: {
+          'authorization': `Bearer ${sessionStorage.getItem('token')}`
+        }
+      })
+    },
+
+    async removeTagFromUser(ctx, tags) {
+      await ax.post(`${ctx.state.API}/tags/removeTag`, {tags: [tags]}, {
+        headers: {
+          'authorization': `Bearer ${sessionStorage.getItem('token')}`
+        }
+      })
+    },
+
     async deleteUser(ctx) {
       try {
         await ax.delete(`${ctx.state.API}/users/delete`, {

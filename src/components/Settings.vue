@@ -7,7 +7,7 @@
         <div class="hashtags" >
           <div class="hashtag" v-for="tag in allTags" :key="tag.index" >
             <h5>{{tag}}</h5>
-            <div @click="removeFlow()"><img src="./../assets/X.png" alt="removeTag" /></div>
+            <div @click="removeFlow(tag)"><img src="./../assets/X.png" alt="removeTag" /></div>
           </div>
         </div>
       </div>
@@ -16,7 +16,7 @@
           <input
             type="text"
             class="streamInput"
-            placeholder="#smooth_criminal"
+            placeholder="#add_a_tag"
             v-model="tag"
           />
           <button class="addBtn" @click="showFlow()">
@@ -48,13 +48,11 @@ export default {
     },
   },
   methods: {
-    removeFlow() {
-      console.log('borttagen')
-      //this.$store.dispatch('removeFlow', this.tag)
+    removeFlow(index) {
+      this.$store.dispatch('removeTagFromUser', index)
     },
     showFlow() {
-      console.log('tillagd', this.tag)
-      //this.$store.dispatch('showFlow', this.tag)
+      this.$store.dispatch('addTagToUser', {tags: this.tag})
     },
     checkState() {
       this.$store.dispatch("checkState");

@@ -6,12 +6,8 @@
       "password": "$2b$10$ynGitMTsezeoMIwJrq0aou4tIr6RPm1Am3RykDnnywNoWde5YJPQm",
       "userkey": "U2FsdGVkX19PDYIfh73scVVVHuAPGdDE6AWwmzzDYH4=",
       "tags": [
-        "#test1",
-        "#test2",
-        "#test8",
-        "#test1",
-        "#test2",
-        "#test9"
+        "#test9",
+        "#hej"
       ]
     },
     {
@@ -34,6 +30,13 @@
       "username": "maria3",
       "password": "$2b$10$vXbrw/xSN3cxKy8SwANcPuWV6gq4IkkhunsZh33NALOUvGHqqiDQm",
       "userkey": "U2FsdGVkX1+TR3brN17UPhUiY/jFz0tKr1ezBrKetvs=",
+      "tags": []
+    },
+    {
+      "uuid": "ZeRFcZdFky",
+      "username": "bajs",
+      "password": "$2b$10$/lbMm1niC2kN.apYm0W1eu3ckk3lUPIQpuoVKqcm3Wj4lc5d2X8je",
+      "userkey": "U2FsdGVkX186qtCiLRhU4y8QJN0eDOknfueBxiKa7Z8=",
       "tags": []
     }
   ],
@@ -130,6 +133,17 @@
         "#test1",
         "#test2",
         "#test9"
+      ]
+    },
+    {
+      "id": "_2D9hbQRn",
+      "date": "4/7/2021, 21:48:00",
+      "owner": "096a4cf4353908540b08c93f9c667b5545e0c77d1789dfff33dbc9e1557020441a6db56c6df0718f4130d6e1f43fae0ac9aa44448357a3760e06cc10370dbe45",
+      "username": "maria1",
+      "info": "Test10",
+      "tags": [
+        "#test10",
+        "#test1"
       ]
     }
   ]
