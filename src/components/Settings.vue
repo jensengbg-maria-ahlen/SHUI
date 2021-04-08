@@ -4,10 +4,12 @@
     <div class="setting">
       <div class="streams">
         <h2>streams</h2>
-        <div class="hashtags" >
-          <div class="hashtag" v-for="tag in allTags" :key="tag.index" >
-            <h5>{{tag}}</h5>
-            <div @click="removeFlow(tag)"><img src="./../assets/X.png" alt="removeTag" /></div>
+        <div class="hashtags">
+          <div class="hashtag" v-for="tag in allTags" :key="tag">
+            <h5>{{ tag }}</h5>
+            <div @click="removeFlow(tag)">
+              <img src="./../assets/X.png" alt="removeTag" />
+            </div>
           </div>
         </div>
       </div>
@@ -37,23 +39,24 @@ export default {
   data() {
     return {
       isHidden: false,
-      tag: ''
-    }
+      tag: "",
+    };
   },
   computed: {
     allTags() {
-      return this.$store.getters['filterTags'];
+      return this.$store.getters["filterTags"];
     },
   },
   methods: {
     removeFlow(index) {
-      this.$store.dispatch('removeTagFromUser', index)
+      this.$store.dispatch("removeTagFromUser", index);
+      this.$store.dispatch("fetchAllFlows");
+      this.$store.dispatch("fetchUserTag");
     },
     showFlow() {
-      this.$store.dispatch('addTagToUser', {tags: this.tag})
-    },
-    checkState() {
-      this.$store.dispatch("checkState");
+      this.$store.dispatch("addTagToUser", { tags: this.tag });
+      this.$store.dispatch("fetchAllFlows");
+      this.$store.dispatch("fetchUserTag");
     },
     deleteMe() {
       this.$store.dispatch("checkState");
@@ -62,6 +65,7 @@ export default {
   },
   beforeMount() {
     this.$store.dispatch("fetchAllFlows");
+    this.$store.dispatch("fetchUserTag");
   },
 };
 </script>

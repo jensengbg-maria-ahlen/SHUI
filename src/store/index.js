@@ -60,23 +60,22 @@ export default new Vuex.Store({
     },
 
     async checkState(ctx) {
-      let user = sessionStorage.getItem('token')
+      let token = sessionStorage.getItem('token')
 
-      if (user) {
+      if (token) {
         let resp = await ax.get(`${ctx.state.API}/auth/isloggedin`, {
           headers: {
-            'authorization': `Bearer ${user}`
+            'authorization': `Bearer ${token}`
           }
         })
 
         if (resp.data.loggedIn === false) {
-          sessionStorage.removeItem('token')
-          sessionStorage.removeItem('userkey')
+          sessionStorage.clear()
           router.push('/login')
         } 
-
       } else {
-        console.log('user not logged in')
+        sessionStorage.clear()
+        router.push('/login')
       }
     },
 
@@ -119,6 +118,15 @@ export default new Vuex.Store({
       ctx.dispatch('fetchAllFlows')
     },
 
+    async fetchUserTag(ctx) {
+      let allTags = await ax.get(`${ctx.state.API}/tags/`, {
+        headers: {
+          'authorization': `Bearer ${sessionStorage.getItem('token')}`
+        }
+      })
+      ctx.commit('allTags', allTags.data )
+    },
+
     async addTagToUser(ctx, tags) {
       await ax.post(`${ctx.state.API}/tags/addtag`, tags, {
         headers: {
@@ -151,16 +159,10 @@ export default new Vuex.Store({
   },
   getters: {
     filterTags(ctx) {
-      let allFlows = ctx.allFlows
-
-      let tagsArray = allFlows.map(tag => {
-        let newTag = tag.tags
-        return newTag
-      });
-
-      const mergeArray = [].concat.apply([], tagsArray)
+      let allFlows = ctx.allTags
+      const mergeArray = [].concat.apply([], allFlows)
+      
       let removedDuplicates = [...new Set(mergeArray)]
-
       return removedDuplicates
     }
   }
