@@ -86,8 +86,7 @@ export default new Vuex.Store({
             'authorization': `Bearer ${sessionStorage.getItem('token')}`
           }
         })
-        ctx.commit('allFlows', data.data) 
-        //ctx.dispatch('decryptFlow', data.data)
+        ctx.dispatch('decryptFlow', data.data)
       } catch (error) {
         console.log(error)
       }
@@ -96,6 +95,7 @@ export default new Vuex.Store({
     
     async decryptFlow(ctx, flows) {
       let flowInfo = flows.map(value => {
+        console.log(value)
         let decryptedText = CryptoJS.AES.decrypt(value.info, sessionStorage.getItem('userkey')).toString(CryptoJS.enc.Utf8)
         value.info = decryptedText 
         return value

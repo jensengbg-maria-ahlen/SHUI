@@ -8,10 +8,7 @@
       "tags": [
         "#redDragons",
         "#gbg",
-        "#ullevi",
-        "#sthlm",
-        "#gbg",
-        "#järntorget"
+        "#ullevi"
       ]
     },
     {
@@ -31,18 +28,19 @@
       "password": "$2b$10$RqxdVNtYAQbs3GBOYKPwTe/bF.Q.lFHPIWkvlSnWicPafBFb6u6Na",
       "userkey": "U2FsdGVkX1+decBHQn0wBdq5/xss2aHIoYXPqovS1F8=",
       "tags": [
-        "#grönan",
-        "#sthlm"
+        "#starfighter",
+        "#sthlm",
+        "#gbg"
       ]
     }
   ],
   "flows": [
     {
-      "id": "ZK0iSfr3Z",
-      "date": "4/8/2021, 16:56:12",
+      "id": "D7pte4ApY",
+      "date": "4/8/2021, 18:26:12",
       "owner": "6608534d87a30cbb1b0cc8c65ad3b07a71f076d23952f6c6cf2129fa51b6f0c0bbde43f0b3a856a443cf10c594c102ab5c521b1914e2a9f22cf6b0e4ffaf0a00",
       "username": "maria",
-      "info": "Red Dragons är på Ullevi.",
+      "info": "U2FsdGVkX19bpAwP3AuhmfuN9FAEKTzQknKYecrW/KI=",
       "tags": [
         "#redDragons",
         "#gbg",
@@ -50,11 +48,11 @@
       ]
     },
     {
-      "id": "NmI93fb3A",
-      "date": "4/8/2021, 16:57:44",
+      "id": "FLxRFcw8a",
+      "date": "4/8/2021, 18:29:30",
       "owner": "153039bedbbc9bba7f2cfd2ea20cddd07357e48733cb84f76b79206a0bfe9b2e3b6d05d46de21e438065d008ff9ce567d8fe99f6b11dde5453d86d9c04150ff0",
       "username": "matilda",
-      "info": "Aina är på g till Nordstan. Där om 5. ",
+      "info": "U2FsdGVkX18SYfuXSXzdz90gKPqoWu2I7myhpajZPeA=",
       "tags": [
         "#aina",
         "#nordstan",
@@ -62,25 +60,14 @@
       ]
     },
     {
-      "id": "u_Wm_SvdE",
-      "date": "4/8/2021, 16:58:34",
+      "id": "6fdtAFPhq",
+      "date": "4/8/2021, 18:31:29",
       "owner": "421fe8424c8c6abf3354dc1fd686f41e297cc514ac478c1eaddbefb2cdcc82dc8e854b47a8e3ba1a60b8e79703031fe46f0e6825475f82140026bbebbc590a78",
       "username": "hilda",
-      "info": "Jag såg Kenny Starfighter på Grönan",
+      "info": "U2FsdGVkX19LG3ytaskNv27S0NzGaIxSNStk6FTPzOk5UF3cVuOPPo9uXHsaCBXqQA6OF06AmMF9JKYheoa9ZDpZRF7B29YFEpwN6Mev/wg=",
       "tags": [
-        "#grönan",
+        "#starfighter",
         "#sthlm"
-      ]
-    },
-    {
-      "id": "qJWsIzlaL",
-      "date": "4/8/2021, 17:00:45",
-      "owner": "6608534d87a30cbb1b0cc8c65ad3b07a71f076d23952f6c6cf2129fa51b6f0c0bbde43f0b3a856a443cf10c594c102ab5c521b1914e2a9f22cf6b0e4ffaf0a00",
-      "username": "maria",
-      "info": "Jag gör bullar. Alla som vill ha kommer till Järntorget!",
-      "tags": [
-        "#gbg",
-        "#järntorget"
       ]
     }
   ]
