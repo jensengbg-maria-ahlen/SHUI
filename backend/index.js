@@ -11,6 +11,7 @@ const tagRoute = require('./routes/hashtags');
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
+app.use(express.static('../dist'));
 
 app.use('/users', usersRoute);
 app.use('/flow', flowRoute);
@@ -18,7 +19,8 @@ app.use('/auth', authRoute);
 app.use('/tags', tagRoute);
 
 
-const port = 3000;
+const port =  process.env.PORT || 3000;
+
 app.listen(port, () => {
     console.log('Server is up and running on port ' + port + '!');
 });

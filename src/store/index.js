@@ -80,6 +80,7 @@ export default new Vuex.Store({
       }
     },
 
+    
     async fetchAllFlows(ctx) {
       try {
         let data = await ax.get(`${ctx.state.API}/flow`, {
@@ -93,7 +94,7 @@ export default new Vuex.Store({
       }
     },
 
-    
+
     async decryptFlow(ctx, flows) {
       let flowInfo = flows.map(value => {
         let decryptedText = CryptoJS.AES.decrypt(value.info, sessionStorage.getItem('userkey')).toString(CryptoJS.enc.Utf8)
