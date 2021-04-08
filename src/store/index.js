@@ -12,8 +12,7 @@ export default new Vuex.Store({
     allFlows: [],
     allTags: [],
     errorMessage: '',
-    showNewMsg: false,
-    showAllFlow: true,
+    showNewMsg: false
   },
   mutations: {
     allFlows(state, flow) {
@@ -22,10 +21,6 @@ export default new Vuex.Store({
 
     allTags(state, tags) {
       state.allTags = tags
-    },
-
-    showAllFlow(state) {
-      state.showAllFlow = !state.showAllFlow
     },
 
     toggleNewMsg(state) {
@@ -79,7 +74,7 @@ export default new Vuex.Store({
           sessionStorage.removeItem('userkey')
           router.push('/login')
         } 
-        
+
       } else {
         console.log('user not logged in')
       }
@@ -98,7 +93,6 @@ export default new Vuex.Store({
         console.log(error)
       }
     },
-
 
     /*
     async decryptFlow(ctx, flows) {
