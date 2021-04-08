@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import ax from 'axios'
 import router from './../router'
-//import CryptoJS from 'crypto-js'
+import CryptoJS from 'crypto-js'
 
 Vue.use(Vuex)
 
@@ -86,29 +86,24 @@ export default new Vuex.Store({
             'authorization': `Bearer ${sessionStorage.getItem('token')}`
           }
         })
-        ctx.commit('allFlows', data.data)
-        //ctx.dispatch('decryptFlow', data.data)
+        ctx.dispatch('decryptFlow', data.data)
       } catch (error) {
         console.log(error)
       }
     },
 
-    /*
+    
     async decryptFlow(ctx, flows) {
-      let decryptedFlow = flows.map(value => {
-        console.log('value: ', value)
-        let decryptedinfo = CryptoJS.AES.decrypt(value.info, sessionStorage.getItem('userkey')).toString(CryptoJS.enc.Utf8)
 
-        value = { ...value, info: decryptedinfo }
-        console.log(`decryptedinfo: '${decryptedinfo}'`)
-
+      let flowInfo = flows.map(value => {
+        let decryptedText = CryptoJS.AES.decrypt(value.info, sessionStorage.getItem('userkey')).toString(CryptoJS.enc.Utf8)
+        value.info = decryptedText 
         return value
-      });
+      })
 
-      console.log('decryptedflow', decryptedFlow)
-      ctx.commit('allFlows', decryptedFlow)
+      ctx.commit('allFlows', flowInfo)      
     },
-*/
+
     async addFlow(ctx, info) {
       await ax.post(`${ctx.state.API}/flow/create`, info, {
         headers: {

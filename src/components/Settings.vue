@@ -18,7 +18,7 @@
           <input
             type="text"
             class="streamInput"
-            placeholder="#add_a_tag"
+            placeholder="#add_a_tag_to_follow"
             v-model="tag"
           />
           <button class="addBtn" @click="showFlow()">
@@ -64,7 +64,6 @@ export default {
     },
   },
   beforeMount() {
-    this.$store.dispatch("fetchAllFlows");
     this.$store.dispatch("fetchUserTag");
   },
 };

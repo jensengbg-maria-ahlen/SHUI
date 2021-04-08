@@ -12,6 +12,9 @@ router.post('/create', async (req, res) => {
         const verified_user = jwt.verify(token, process.env.JWT_KEY);
         let user = db.get('users').find({ uuid: verified_user.uuid }).value();
 
+        const bytes = CryptoJS.AES.decrypt(user.userkey, process.env.SECRET);
+        const USER_KEY_DECRYPTED = bytes.toString(CryptoJS.enc.Utf8);
+
         let usersTags = db.get('users').find({ uuid: verified_user.uuid }).get('tags').push(...req.body.tags).write()
         console.log(usersTags)
 
@@ -20,7 +23,7 @@ router.post('/create', async (req, res) => {
             date: new Date().toLocaleString(),
             owner: CryptoJS.SHA3(user.uuid).toString(),
             username: user.username,
-            info: req.body.info, //CryptoJS.AES.encrypt(req.body.info, process.env.SECRET).toString(),
+            info: CryptoJS.AES.encrypt(req.body.info, USER_KEY_DECRYPTED).toString(),
             tags: req.body.tags
         }
 
@@ -36,9 +39,9 @@ router.post('/create', async (req, res) => {
 
 router.get('/', (req, res) => {
     const token = req.headers['authorization'].split(' ')[1];
+
     try {
         const verified_user = jwt.verify(token, process.env.JWT_KEY);
-        
         let user = db.get('users').find({ uuid: verified_user.uuid }).value()
         
         const filterflowTags = (flow) => {
@@ -47,7 +50,6 @@ router.get('/', (req, res) => {
             )
             return filteredTags.length > 0;
         }
-
 
         if (user.tags.length > 0) {
             let flows = db.get('flow').filter(filterflowTags).value()

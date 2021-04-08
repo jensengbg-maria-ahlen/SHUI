@@ -5,12 +5,7 @@
       "username": "maria2",
       "password": "$2b$10$e1TdZlQnKGT0zV.dQWGb/e7k.7XAdpsbk3Lmr8Gb5SfAFjwe90B66",
       "userkey": "U2FsdGVkX1/71ZVFC9QcUnNYwzRN3ZfVckS7fKwbzJc=",
-      "tags": [
-        "#test1",
-        "#hej",
-        "#test8",
-        "#test2"
-      ]
+      "tags": []
     },
     {
       "uuid": "mEXtcOEBU7",
@@ -20,127 +15,46 @@
       "tags": []
     },
     {
-      "uuid": "ZeRFcZdFky",
-      "username": "bajs",
-      "password": "$2b$10$/lbMm1niC2kN.apYm0W1eu3ckk3lUPIQpuoVKqcm3Wj4lc5d2X8je",
-      "userkey": "U2FsdGVkX186qtCiLRhU4y8QJN0eDOknfueBxiKa7Z8=",
-      "tags": []
+      "uuid": "MllvX5-EMZ",
+      "username": "maria",
+      "password": "$2b$10$l1DLiwcXd/gJsKkqKln04.hsNCbzHR0qcdlS5TZ9R99bAmC0sc3v2",
+      "userkey": "U2FsdGVkX19zDqLVxhnCO+4Nw8/2zOI191HVjEUe3jQ=",
+      "tags": [
+        "#test1",
+        "#test2",
+        "#test3"
+      ]
     }
   ],
   "flow": [
     {
-      "id": "Rfdj9K8hG",
-      "date": "4/7/2021, 15:11:47",
-      "owner": "8f18186a0adb4ffafe7ec3b47042a664522e37f35f6bc4b28328d225e022eb0d5dba08ef2bd4960690e0268150783a3481b12e19eb1da574994cee26e37aa1ed",
-      "username": "maria2",
-      "info": "Test1",
+      "id": "Wdg_Zv616",
+      "date": "4/8/2021, 15:24:12",
+      "owner": "6608534d87a30cbb1b0cc8c65ad3b07a71f076d23952f6c6cf2129fa51b6f0c0bbde43f0b3a856a443cf10c594c102ab5c521b1914e2a9f22cf6b0e4ffaf0a00",
+      "username": "maria",
+      "info": "U2FsdGVkX1+m7IfGbmShWH5C2kbhtCobzKnISGtydeU=",
       "tags": [
         "#test1"
       ]
     },
     {
-      "id": "qinwDNk2y",
-      "date": "4/7/2021, 15:11:58",
-      "owner": "8f18186a0adb4ffafe7ec3b47042a664522e37f35f6bc4b28328d225e022eb0d5dba08ef2bd4960690e0268150783a3481b12e19eb1da574994cee26e37aa1ed",
-      "username": "maria2",
-      "info": "Test2",
+      "id": "e7KQorSjV",
+      "date": "4/8/2021, 15:24:21",
+      "owner": "6608534d87a30cbb1b0cc8c65ad3b07a71f076d23952f6c6cf2129fa51b6f0c0bbde43f0b3a856a443cf10c594c102ab5c521b1914e2a9f22cf6b0e4ffaf0a00",
+      "username": "maria",
+      "info": "U2FsdGVkX1/NGN9M/R/t25BLMlVda3Ani31b67jaL2Q=",
       "tags": [
         "#test2"
       ]
     },
     {
-      "id": "Bz0_fQvR3",
-      "date": "4/7/2021, 15:12:06",
-      "owner": "8f18186a0adb4ffafe7ec3b47042a664522e37f35f6bc4b28328d225e022eb0d5dba08ef2bd4960690e0268150783a3481b12e19eb1da574994cee26e37aa1ed",
-      "username": "maria2",
-      "info": "Test3",
+      "id": "-90_o7kiY",
+      "date": "4/8/2021, 15:24:34",
+      "owner": "6608534d87a30cbb1b0cc8c65ad3b07a71f076d23952f6c6cf2129fa51b6f0c0bbde43f0b3a856a443cf10c594c102ab5c521b1914e2a9f22cf6b0e4ffaf0a00",
+      "username": "maria",
+      "info": "U2FsdGVkX1/zSOKfuot6TXp1NxOz7lbVZ34Cj6otAG8=",
       "tags": [
         "#test3"
-      ]
-    },
-    {
-      "id": "U042QVL_i",
-      "date": "4/7/2021, 15:12:16",
-      "owner": "8f18186a0adb4ffafe7ec3b47042a664522e37f35f6bc4b28328d225e022eb0d5dba08ef2bd4960690e0268150783a3481b12e19eb1da574994cee26e37aa1ed",
-      "username": "maria2",
-      "info": "Test4",
-      "tags": [
-        "#test4"
-      ]
-    },
-    {
-      "id": "1kd6fV6wZ",
-      "date": "4/7/2021, 15:12:25",
-      "owner": "8f18186a0adb4ffafe7ec3b47042a664522e37f35f6bc4b28328d225e022eb0d5dba08ef2bd4960690e0268150783a3481b12e19eb1da574994cee26e37aa1ed",
-      "username": "maria2",
-      "info": "test5",
-      "tags": [
-        "#test5"
-      ]
-    },
-    {
-      "id": "1jZhAwGBG",
-      "date": "4/7/2021, 15:12:33",
-      "owner": "8f18186a0adb4ffafe7ec3b47042a664522e37f35f6bc4b28328d225e022eb0d5dba08ef2bd4960690e0268150783a3481b12e19eb1da574994cee26e37aa1ed",
-      "username": "maria2",
-      "info": "Test6",
-      "tags": [
-        "#test6"
-      ]
-    },
-    {
-      "id": "fgeXDAQmO",
-      "date": "4/7/2021, 15:12:47",
-      "owner": "8f18186a0adb4ffafe7ec3b47042a664522e37f35f6bc4b28328d225e022eb0d5dba08ef2bd4960690e0268150783a3481b12e19eb1da574994cee26e37aa1ed",
-      "username": "maria2",
-      "info": "Test7",
-      "tags": [
-        "#test7"
-      ]
-    },
-    {
-      "id": "KVMdMUyGm",
-      "date": "4/7/2021, 19:52:08",
-      "owner": "096a4cf4353908540b08c93f9c667b5545e0c77d1789dfff33dbc9e1557020441a6db56c6df0718f4130d6e1f43fae0ac9aa44448357a3760e06cc10370dbe45",
-      "username": "Anonymous",
-      "info": "Test8",
-      "tags": [
-        "#test1",
-        "#test2",
-        "#test8"
-      ]
-    },
-    {
-      "id": "-d9eMPnQ8",
-      "date": "4/7/2021, 19:52:56",
-      "owner": "096a4cf4353908540b08c93f9c667b5545e0c77d1789dfff33dbc9e1557020441a6db56c6df0718f4130d6e1f43fae0ac9aa44448357a3760e06cc10370dbe45",
-      "username": "Anonymous",
-      "info": "Test9",
-      "tags": [
-        "#test1",
-        "#test2",
-        "#test9"
-      ]
-    },
-    {
-      "id": "_2D9hbQRn",
-      "date": "4/7/2021, 21:48:00",
-      "owner": "096a4cf4353908540b08c93f9c667b5545e0c77d1789dfff33dbc9e1557020441a6db56c6df0718f4130d6e1f43fae0ac9aa44448357a3760e06cc10370dbe45",
-      "username": "Anonymous",
-      "info": "Test10",
-      "tags": [
-        "#test10",
-        "#test1"
-      ]
-    },
-    {
-      "id": "wWBbGcde_",
-      "date": "4/8/2021, 11:45:53",
-      "owner": "8f18186a0adb4ffafe7ec3b47042a664522e37f35f6bc4b28328d225e022eb0d5dba08ef2bd4960690e0268150783a3481b12e19eb1da574994cee26e37aa1ed",
-      "username": "maria2",
-      "info": "Hej",
-      "tags": [
-        "#hej"
       ]
     }
   ]
