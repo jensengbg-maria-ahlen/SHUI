@@ -4,114 +4,6 @@ body {
         display: flex;
         flex-direction: column;
 
-        #settings {
-            background-color: #EF4343;
-            width: 100vw;
-            height: 812px;
-            top: 0;
-            position: fixed;
-
-            .setting {
-                width: 100vw;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                .streams {
-                    width: 90%;
-                    height: 90%;
-                    display: flex;
-                    flex-direction: column;
-
-                    .hashtags {
-                        display: grid;
-                        grid-template-columns: 160px 160px;
-                        width: 131px;
-
-                        .hashtag {
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            padding-left: 1em;
-                            margin: 0.5em;
-                            height: 32px;
-                            min-width: 131px;
-                            background-color: rgba(255, 255, 255, 0.1);
-                            border-radius: 4px;
-
-                            div {
-                                background-color: rgba(255, 255, 255, 0.2);
-                                height: 32px;
-                                width: 32px;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                border-radius: 0px 4px 4px 0px;           
-                            } 
-                        }
-                    }
-                }
-                
-
-                .inputStreams {
-                    display: flex;
-                    align-items: center;
-                    width: 347px;
-                    flex-direction: row;
-                    background-color: #FFFFFF;
-                    box-sizing: border-box;
-                    border-radius: 4px;
-                    margin-bottom: 1.5em;
-                    margin-top: 1.5em;
-    
-                    .streamInput {
-                        width: 276px;
-                        height: 72px;
-                        border: 2px solid #FFFFFF;
-                        box-sizing: border-box;
-                        border-radius: 4px;
-                        background-color: #EF4343;
-                        font-family: PT Sans;
-                        font-style: normal;
-                        font-weight: normal;
-                        font-size: 24px;
-                        line-height: 36px;
-                        margin: 0;
-                        display: flex;
-                        align-items: center;
-                        color: #FFFFFF;
-                    }
-    
-                    .addBtn {
-                        height: 72px;
-                        width: 72px;
-                        border: 2px solid #FFFFFF;
-                        box-sizing: border-box;
-                        border-radius: 4px;
-                        background-color: #FFFFFF;
-                    }
-                }
-    
-                .removeBtn {
-                    width: 347px;
-                    height: 72px;
-                    background: #082756;
-                    border-radius: 4px;
-                    font-family: PT Sans;
-                    font-style: normal;
-                    font-weight: bold;
-                    font-size: 24px;
-                    line-height: 36px;
-                    margin: 0;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #FFFFFF;
-                }
-            }
-
-            
-        }
 
         #landing, #login, #register, #removed {
             background-image: url('./assets/bottom.svg');
@@ -200,12 +92,120 @@ body {
 
         #flow {
             width: 100vw;
-            margin: 0 auto;
+            margin-top: -5em;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             background: linear-gradient(to bottom, #19274a, #0b0d16);
+
+            #settings {
+                background-color: #EF4343;
+                width: 100vw;
+                height: 812px;
+                top: 0;
+                position: fixed;
+    
+                .setting {
+                    width: 100vw;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+    
+                    .streams {
+                        width: 90%;
+                        height: 90%;
+                        display: flex;
+                        flex-direction: column;
+    
+                        .hashtags {
+                            display: grid;
+                            grid-template-columns: 160px 160px;
+                            width: 131px;
+    
+                            .hashtag {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                padding-left: 1em;
+                                margin: 0.5em;
+                                height: 32px;
+                                min-width: 131px;
+                                background-color: rgba(255, 255, 255, 0.1);
+                                border-radius: 4px;
+    
+                                div {
+                                    background-color: rgba(255, 255, 255, 0.2);
+                                    height: 32px;
+                                    width: 32px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border-radius: 0px 4px 4px 0px;           
+                                } 
+                            }
+                        }
+                    }
+                    
+    
+                    .inputStreams {
+                        display: flex;
+                        align-items: center;
+                        width: 347px;
+                        flex-direction: row;
+                        background-color: #FFFFFF;
+                        box-sizing: border-box;
+                        border-radius: 4px;
+                        margin-bottom: 1.5em;
+                        margin-top: 1.5em;
+        
+                        .streamInput {
+                            width: 276px;
+                            height: 72px;
+                            border: 2px solid #FFFFFF;
+                            box-sizing: border-box;
+                            border-radius: 4px;
+                            background-color: #EF4343;
+                            font-family: PT Sans;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 24px;
+                            line-height: 36px;
+                            margin: 0;
+                            display: flex;
+                            align-items: center;
+                            color: #FFFFFF;
+                        }
+        
+                        .addBtn {
+                            height: 72px;
+                            width: 72px;
+                            border: 2px solid #FFFFFF;
+                            box-sizing: border-box;
+                            border-radius: 4px;
+                            background-color: #FFFFFF;
+                        }
+                    }
+        
+                    .removeBtn {
+                        width: 347px;
+                        height: 72px;
+                        background: #082756;
+                        border-radius: 4px;
+                        font-family: PT Sans;
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 24px;
+                        line-height: 36px;
+                        margin: 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #FFFFFF;
+                    }
+                }
+    
+            }    
 
             #newMessage {
                 width: 100%;

@@ -14,7 +14,6 @@ export default new Vuex.Store({
     errorMessage: '',
     showNewMsg: false,
     showAllFlow: true,
-    showSettings: false
   },
   mutations: {
     allFlows(state, flow) {
@@ -35,10 +34,6 @@ export default new Vuex.Store({
 
     displayError(state, error) {
       state.errorMessage = error
-    },
-
-    showSettings(state) {
-      state.showSettings = !state.showSettings
     }
   },
   actions: {
@@ -83,9 +78,8 @@ export default new Vuex.Store({
           sessionStorage.removeItem('token')
           sessionStorage.removeItem('userkey')
           router.push('/login')
-        } else {
-          ctx.commit('showSettings')
-        }
+        } 
+        
       } else {
         console.log('user not logged in')
       }

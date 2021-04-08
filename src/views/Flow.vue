@@ -1,5 +1,9 @@
 <template>
   <section id="flow">
+    <header>
+      <img src="@/assets/top.png" alt="top-logo" @click="isHidden = !isHidden">
+      <Settings v-if="!isHidden"/>
+    </header>
     <NewMessage v-if="showNewMsg"/>
     <FlowMsg v-for="flow in allFlows" :key="flow.id" :flow="flow" />
     <div class="create">
@@ -9,13 +13,20 @@
 </template>
 
 <script>
+import Settings from './../components/Settings'
 import NewMessage from './../components/NewMessage'
 import FlowMsg from './../components/FlowMsg'
 export default {
   name: "Flow",
   components: {
+    Settings,
     FlowMsg,
     NewMessage
+  },
+  data() {
+    return {
+      isHidden: true
+    }
   },
   computed: {
     showNewMsg() {

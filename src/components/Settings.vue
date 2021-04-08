@@ -1,6 +1,6 @@
 <template>
-  <section id="settings">
-    <img src="@/assets/top.png" alt="top-logo" @click="checkState" />
+  <section id="settings" v-if="!isHidden">
+    <img src="@/assets/top.png" alt="top-logo" @click="isHidden = !isHidden" />
     <div class="setting">
       <div class="streams">
         <h2>streams</h2>
@@ -36,13 +36,11 @@ export default {
   name: "Settings",
   data() {
     return {
+      isHidden: false,
       tag: ''
     }
   },
   computed: {
-    showSettings() {
-      return this.$store.state.showSettings;
-    },
     allTags() {
       return this.$store.getters['filterTags'];
     },
