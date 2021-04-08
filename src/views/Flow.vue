@@ -32,9 +32,6 @@ export default {
     showNewMsg() {
       return this.$store.state.showNewMsg
     },
-    showAllFlow() {
-      return this.$store.state.hideAllFlow
-    },
     allFlows() {
       return this.$store.state.allFlows
     }
@@ -42,7 +39,6 @@ export default {
   methods: {
     toggleNewMsg() {
       this.$store.commit('toggleNewMsg')
-      this.$store.commit('showAllFlow')
     }
   },
   beforeMount() {
