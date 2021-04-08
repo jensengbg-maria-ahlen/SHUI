@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     toggleNewMsg() {
-      this.$store.commit('toggleNewMsg')
+      this.$store.commit('showNewMsg')
     }
   },
   beforeMount() {

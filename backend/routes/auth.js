@@ -12,7 +12,7 @@ router.post('/login', async (req, res) => {
         const validPass = await bcrypt.compare(req.body.password, user.password);
 
         if(validPass) {
-            const bytes = CryptoJS.AES.decrypt(user.userkey, process.env.SECRET);
+            const bytes = CryptoJS.AES.decrypt(user.userkey, process.env.SECRET_KEY);
             const USER_KEY_DECRYPTED = bytes.toString(CryptoJS.enc.Utf8);
 
             const token = jwt.sign({ uuid: user.uuid }, process.env.JWT_KEY);
@@ -29,7 +29,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-
+//check if user is loggedin
 router.get('/isloggedin', async (req, res) => {
     const token = req.headers['authorization'].split(' ')[1];
 

@@ -19,7 +19,7 @@ export default {
       publish() {
         let tagsArray = this.tags.split(', ')
         this.$store.dispatch('addFlow', {info: this.info, tags: tagsArray})
-        this.$store.commit('toggleNewMsg')
+        this.$store.commit('showNewMsg')
       }
     }
 }

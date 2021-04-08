@@ -20,7 +20,7 @@ router.post('/create', async (req, res) => {
             date: new Date().toLocaleString(),
             owner: CryptoJS.SHA3(user.uuid).toString(),
             username: user.username,
-            info: CryptoJS.AES.encrypt(req.body.info, process.env.SECRET).toString(),
+            info: CryptoJS.AES.encrypt(req.body.info, process.env.PUBLIC_KEY).toString(),
             tags: req.body.tags
         }
 
@@ -33,7 +33,6 @@ router.post('/create', async (req, res) => {
 });
 
 
-
 router.get('/', (req, res) => {
     const token = req.headers['authorization'].split(' ')[1];
 
@@ -41,9 +40,8 @@ router.get('/', (req, res) => {
         const verified_user = jwt.verify(token, process.env.JWT_KEY);
         let user = db.get('users').find({ uuid: verified_user.uuid }).value()
 
-        const bytes = CryptoJS.AES.decrypt(user.userkey, process.env.SECRET);
-        const USER_KEY_DECRYPTED = bytes.toString(CryptoJS.enc.Utf8);
         
+        //filter out all tags that user is following
         const filterflowTags = (flow) => {
             const filteredTags = flow.tags.filter((tag) =>
                 user.tags.includes(tag) 
@@ -51,34 +49,13 @@ router.get('/', (req, res) => {
             return filteredTags.length > 0;
         }
 
+        //get all flows that user is following
         if (user.tags.length > 0) {
-            let flows = db.get('flows').filter(filterflowTags).value()
-
-            let newFlowsArray = flows.map(flow => {
-                try {
-                    let decrypt = CryptoJS.AES.decrypt(flow.info, process.env.SECRET).toString(CryptoJS.enc.Utf8)
-                    let encrypted = CryptoJS.AES.encrypt(decrypt, USER_KEY_DECRYPTED).toString()
-                    flow.info = encrypted
-                    return {...flow, info: encrypted}
-                } catch (error) {
-                    console.log(error)
-                }
-            })
-            res.status(200).send(newFlowsArray)
-        } else {
+            let flows = db.get('flows').filter(filterflowTags).value()            
+            res.status(200).send(flows)
+        } else {            
             let flows = db.get('flows').value()
-            let newFlowsArray = flows.map(flow => {
-                try {
-                    let decrypt = CryptoJS.AES.decrypt(flow.info, process.env.SECRET).toString(CryptoJS.enc.Utf8)
-                    console.log(decrypt)
-                    let encrypted = CryptoJS.AES.encrypt(decrypt, USER_KEY_DECRYPTED).toString()
-                    flow.info = encrypted
-                    return {...flow, info: encrypted}
-                } catch (error) {
-                    console.log(error)
-                }
-            })
-            res.status(200).send(newFlowsArray)
+            res.status(200).send(flows)
         }
 
     } catch (error) {

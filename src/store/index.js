@@ -23,7 +23,7 @@ export default new Vuex.Store({
       state.allTags = tags
     },
 
-    toggleNewMsg(state) {
+    showNewMsg(state) {
       state.showNewMsg = !state.showNewMsg
     },
 
@@ -59,6 +59,7 @@ export default new Vuex.Store({
       }
     },
 
+    //check if token is valid
     async checkState(ctx) {
       let token = sessionStorage.getItem('token')
 
@@ -85,7 +86,7 @@ export default new Vuex.Store({
           headers: {
             'authorization': `Bearer ${sessionStorage.getItem('token')}`
           }
-        })
+        })  
         ctx.dispatch('decryptFlow', data.data)
       } catch (error) {
         console.log(error)
@@ -95,7 +96,6 @@ export default new Vuex.Store({
     
     async decryptFlow(ctx, flows) {
       let flowInfo = flows.map(value => {
-        console.log(value)
         let decryptedText = CryptoJS.AES.decrypt(value.info, sessionStorage.getItem('userkey')).toString(CryptoJS.enc.Utf8)
         value.info = decryptedText 
         return value
@@ -103,6 +103,7 @@ export default new Vuex.Store({
 
       ctx.commit('allFlows', flowInfo)      
     },
+
 
     async addFlow(ctx, info) {
       await ax.post(`${ctx.state.API}/flow/create`, info, {
@@ -113,6 +114,7 @@ export default new Vuex.Store({
       ctx.dispatch('fetchAllFlows')
     },
 
+
     async fetchUserTag(ctx) {
       let allTags = await ax.get(`${ctx.state.API}/tags/`, {
         headers: {
@@ -122,6 +124,7 @@ export default new Vuex.Store({
       ctx.commit('allTags', allTags.data )
     },
 
+
     async addTagToUser(ctx, tags) {
       await ax.post(`${ctx.state.API}/tags/addtag`, tags, {
         headers: {
@@ -130,6 +133,7 @@ export default new Vuex.Store({
       })
     },
 
+
     async removeTagFromUser(ctx, tags) {
       await ax.post(`${ctx.state.API}/tags/removeTag`, {tags: [tags]}, {
         headers: {
@@ -137,6 +141,7 @@ export default new Vuex.Store({
         }
       })
     },
+
 
     async deleteUser(ctx) {
       try {
@@ -152,7 +157,9 @@ export default new Vuex.Store({
       }
     }
   },
+
   getters: {
+    //merge array if several arrays and remove all duplicates of #tags
     filterTags(ctx) {
       let allFlows = ctx.allTags
       const mergeArray = [].concat.apply([], allFlows)

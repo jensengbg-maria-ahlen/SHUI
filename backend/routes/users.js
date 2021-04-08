@@ -10,14 +10,15 @@ router.post('/create', async (req, res) => {
     if (req.body.username && req.body.password) {
         const HASHED_PW = await bcrypt.hash(req.body.password, 10);
 
-        const USER_KEY = shortid.generate();
-        const USER_KEY_ENCRYPTED = CryptoJS.AES.encrypt(USER_KEY, process.env.SECRET).toString();
+        const PUBLIC_KEY = process.env.PUBLIC_KEY
+
+        const PUBLIC_KEY_ENCRYPTED = CryptoJS.AES.encrypt(PUBLIC_KEY, process.env.SECRET_KEY).toString();
 
         let newUser = {
             uuid: shortid.generate(),
             username: req.body.username,
             password: HASHED_PW,
-            userkey: USER_KEY_ENCRYPTED,
+            userkey: PUBLIC_KEY_ENCRYPTED,
             tags: []
         };
 
@@ -40,7 +41,7 @@ router.delete('/delete', (req, res) => {
 
     try {
         const verified_user = jwt.verify(token, process.env.JWT_KEY);
-        db.get('flow').filter({ owner: CryptoJS.SHA3(verified_user.uuid).toString() }).forEach((user) => { user.username = 'Anonymous' }).write();
+        db.get('flows').filter({ owner: CryptoJS.SHA3(verified_user.uuid).toString() }).forEach((user) => { user.username = 'Anonymous' }).write();
 
         db.get('users').remove({ uuid: verified_user.uuid }).write();
         res.status(201).send('user is logged in')
