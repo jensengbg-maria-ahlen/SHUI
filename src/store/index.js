@@ -97,8 +97,8 @@ export default new Vuex.Store({
 
     async decryptFlow(ctx, flows) {
       let flowInfo = flows.map(value => {
-        let decryptedText = CryptoJS.AES.decrypt(value.info, sessionStorage.getItem('userkey')).toString(CryptoJS.enc.Utf8)
-        value.info = decryptedText
+        let decryptedText = CryptoJS.AES.decrypt(value.info, sessionStorage.getItem('token')).toString(CryptoJS.enc.Utf8)
+        value = {...value, info: decryptedText}
         return value
       })
 

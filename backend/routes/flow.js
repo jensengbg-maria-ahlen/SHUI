@@ -13,14 +13,14 @@ router.post('/create', async (req, res) => {
         let user = db.get('users').find({ uuid: verified_user.uuid }).value();
 
         let usersTags = db.get('users').find({ uuid: verified_user.uuid }).get('tags').push(...req.body.tags).write()
-        console.log(usersTags)
+        console.log('usersTags', usersTags)
 
         const newFlow = {
             id: shortid.generate(),
             date: new Date().toLocaleString(),
             owner: CryptoJS.SHA3(user.uuid).toString(),
             username: user.username,
-            info: CryptoJS.AES.encrypt(req.body.info, process.env.PUBLIC_KEY).toString(),
+            info: CryptoJS.AES.encrypt(req.body.info, process.env.SECRET_KEY).toString(),
             tags: req.body.tags
         }
 
@@ -51,11 +51,38 @@ router.get('/', (req, res) => {
 
         //get all flows that user is following
         if (user.tags.length > 0) {
-            let flows = db.get('flows').filter(filterflowTags).value()            
-            res.status(200).send(flows)
+            let flows = [...db.get('flows').filter(filterflowTags).value()]         
+
+            let newFlowsArray = flows.map(flow => {
+                try {
+                    let decrypt = CryptoJS.AES.decrypt(flow.info, process.env.SECRET_KEY).toString(CryptoJS.enc.Utf8)
+
+                    let encrypted = CryptoJS.AES.encrypt(decrypt, token).toString()
+                    
+                    flow = {...flow, info: encrypted}
+
+                    return flow
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+            res.status(200).send(newFlowsArray)
         } else {            
             let flows = db.get('flows').value()
-            res.status(200).send(flows)
+            let newFlowsArray = flows.map(flow => {
+                try {
+                    let decrypt = CryptoJS.AES.decrypt(flow.info, process.env.SECRET_KEY).toString(CryptoJS.enc.Utf8)
+
+                    let encrypted = CryptoJS.AES.encrypt(decrypt, token).toString()
+                    
+                    flow = {...flow, info: encrypted}
+
+                    return flow
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+            res.status(200).send(newFlowsArray)
         }
 
     } catch (error) {

@@ -11,7 +11,6 @@ const tagRoute = require('./routes/hashtags');
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
-app.use(express.static('../dist'));
 
 app.use('/users', usersRoute);
 app.use('/flow', flowRoute);

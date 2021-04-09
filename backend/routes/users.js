@@ -10,15 +10,14 @@ router.post('/create', async (req, res) => {
     if (req.body.username && req.body.password) {
         const HASHED_PW = await bcrypt.hash(req.body.password, 10);
 
-        const PUBLIC_KEY = process.env.PUBLIC_KEY
-
-        const PUBLIC_KEY_ENCRYPTED = CryptoJS.AES.encrypt(PUBLIC_KEY, process.env.SECRET_KEY).toString();
+        const USER_KEY = shortid.generate()
+        const USER_KEY_ENCRYPTED = CryptoJS.AES.encrypt(USER_KEY, process.env.SECRET_KEY).toString();
 
         let newUser = {
             uuid: shortid.generate(),
             username: req.body.username,
             password: HASHED_PW,
-            userkey: PUBLIC_KEY_ENCRYPTED,
+            userkey: USER_KEY_ENCRYPTED,
             tags: []
         };
 
