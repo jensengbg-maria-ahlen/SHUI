@@ -7,7 +7,7 @@
     <NewMessage v-if="showNewMsg"/>
     <FlowMsg v-for="flow in allFlows" :key="flow.id" :flow="flow" />
     <div class="create">
-      <img src="@/assets/create.png" alt="create button" @click="toggleNewMsg()">
+      <img v-if="isHidden" src="@/assets/create.png" alt="create button" @click="toggleNewMsg()">
     </div>
   </section>
 </template>

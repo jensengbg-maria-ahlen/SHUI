@@ -66,8 +66,7 @@ body {
             #settings {
                 background-color: $red;
                 width: 100vw;
-                height: 812px;
-                top: 0;
+                height: 100vh;
                 position: fixed;
     
                 .setting {
@@ -165,7 +164,8 @@ body {
                 .tags {
                     display: flex;
                     justify-content: flex-end;
-                    width: 310px;
+                    width: 90%;
+                    flex-wrap: wrap;
                 }
             }
 

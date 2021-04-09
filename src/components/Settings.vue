@@ -1,6 +1,5 @@
 <template>
-  <section id="settings" v-if="!isHidden">
-    <img src="@/assets/top.png" alt="top-logo" @click="isHidden = !isHidden" />
+  <section id="settings" >
     <div class="setting">
       <div class="streams">
         <h2>streams</h2>
@@ -38,7 +37,6 @@ export default {
   name: "Settings",
   data() {
     return {
-      isHidden: false,
       tag: "",
     };
   },
