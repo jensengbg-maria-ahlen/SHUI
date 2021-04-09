@@ -1,5 +1,7 @@
 @import './layouts';
 @import './typography';
+@import './inputs_and_buttons';
+@import './variables';
 
 
 html, * {
@@ -9,13 +11,16 @@ html, * {
 body {
     margin: 0;
     height: 100vh;
-    background-color: #19274A;
+    width: 100vw;
+    background-color: $darkblue;
 
     #app {
         height: inherit;
+        width: inherit;
 
         main {
             height: inherit;
+            width: inherit;
         }
     }
 }

@@ -8,10 +8,10 @@
     <form class="LoginCredentials" @submit.prevent="login">
       <div class="inputFieldsForLogin">
         <div class="errorMessage">{{displayError}}</div>
-        <input type="text" placeholder="Användarnamn" v-model="username" />
-        <div v-show="submitted && !username" class="missingCred">Du måste fylla i användarnamn</div>
-        <input type="password" placeholder="Lösenord" v-model="password"/>
-        <div v-show="submitted && !password" class="missingCred">Du måste fylla i lösenord</div>
+        <input type="text" placeholder="Användarnamn" v-model="username" class="credentials" />
+        <input type="password" placeholder="Lösenord" v-model="password" class="credentials" />
+        <div class="missingCred">{{missingUsername}}</div>
+        <div class="missingCred">{{missingPassword}}</div>
       </div>
       <button id="loginBtn" type="submit">Logga in</button>
     </form>
@@ -25,13 +25,21 @@ export default {
     return {
       username: "",
       password: "",
-      submitted: false
+      missingUsername: "",
+      missingPassword: ""
     };
   },
   methods: {
     login() {
-      this.submitted = true
-      this.$store.dispatch('login', { username: this.username, password: this.password })
+      if(this.username <= 0) {
+        this.missingUsername = 'Du måste fylla i användarnamn'
+
+      } else if(this.password <= 0) {
+        this.missingPassword = 'Du måste fylla i lösenord'
+
+      } else {
+        this.$store.dispatch('login', { username: this.username, password: this.password })
+      }
     },
   },
   computed: {

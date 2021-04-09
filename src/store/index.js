@@ -73,21 +73,21 @@ export default new Vuex.Store({
         if (resp.data.loggedIn === false) {
           sessionStorage.clear()
           router.push('/login')
-        } 
+        }
       } else {
         sessionStorage.clear()
         router.push('/')
       }
     },
 
-    
+
     async fetchAllFlows(ctx) {
       try {
         let data = await ax.get(`${ctx.state.API}/flow`, {
           headers: {
             'authorization': `Bearer ${sessionStorage.getItem('token')}`
           }
-        })  
+        })
         ctx.dispatch('decryptFlow', data.data)
       } catch (error) {
         console.log(error)
@@ -98,11 +98,11 @@ export default new Vuex.Store({
     async decryptFlow(ctx, flows) {
       let flowInfo = flows.map(value => {
         let decryptedText = CryptoJS.AES.decrypt(value.info, sessionStorage.getItem('userkey')).toString(CryptoJS.enc.Utf8)
-        value.info = decryptedText 
+        value.info = decryptedText
         return value
       })
 
-      ctx.commit('allFlows', flowInfo)      
+      ctx.commit('allFlows', flowInfo)
     },
 
 
@@ -122,7 +122,7 @@ export default new Vuex.Store({
           'authorization': `Bearer ${sessionStorage.getItem('token')}`
         }
       })
-      ctx.commit('allTags', allTags.data )
+      ctx.commit('allTags', allTags.data)
     },
 
 
@@ -136,7 +136,7 @@ export default new Vuex.Store({
 
 
     async removeTagFromUser(ctx, tags) {
-      await ax.post(`${ctx.state.API}/tags/removeTag`, {tags: [tags]}, {
+      await ax.post(`${ctx.state.API}/tags/removeTag`, { tags: [tags] }, {
         headers: {
           'authorization': `Bearer ${sessionStorage.getItem('token')}`
         }
@@ -164,7 +164,7 @@ export default new Vuex.Store({
     filterTags(ctx) {
       let allFlows = ctx.allTags
       const mergeArray = [].concat.apply([], allFlows)
-      
+
       let removedDuplicates = [...new Set(mergeArray)]
       return removedDuplicates
     }

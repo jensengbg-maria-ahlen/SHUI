@@ -1,0 +1,110 @@
+@import './variables';
+
+/* buttons */
+
+button {
+    width: 310px;
+    height: 72px;
+    font-family: PT Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+#loginBtn, #registerBtn {
+    background-color: $white;
+    border-radius: 4px;
+    color: $black;
+    margin: 1em;
+}
+
+.publishBtn {
+    background-color: $red;
+    color: $black;
+    margin: 1em;
+}
+
+
+.addBtn {
+    height: 72px;
+    width: 72px;
+    border: 2px solid $white;
+    border-radius: 4px;
+    background-color: $white;
+}
+
+.removeBtn {
+    width: 347px;
+    background: $darkblue;
+    border-radius: 4px;
+    line-height: 36px;
+    margin: 0;
+    color: $white;
+}
+
+
+
+/* inputs */
+
+input {
+    font-family: PT Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 36px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.streamInput {
+    width: 276px;
+    height: 72px;
+    border: 2px solid $white;
+    border-radius: 4px;
+    background-color: $red;
+    margin: 0;
+    color: $white;
+}
+
+.commentInput {
+    background: $white;
+    box-shadow: 0px 0px 16px $shadow;
+    width: 310px;
+    height: 432px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+    margin: 1em;
+}
+
+.tagInput{
+  border: 1px solid $white;
+  background-color: $darkblue;
+  width: 310px;
+  height: 72px;
+  border-radius: 3px;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: 0.3em;
+  color: $white;
+  margin: 1em;
+}
+
+.credentials {
+    border: 1px solid $white;
+    background-color: $darkblue;
+    width: 310px;
+    height: 72px;
+    border-radius: 3px;
+    letter-spacing: 0.3em;
+    color: $white;
+    margin: 1em;
+}
